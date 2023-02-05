@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class pantalla {
     protected JPanel panel2;
@@ -15,6 +17,5 @@ public class pantalla {
     private JButton editarImagenButton;
     private JPanel panel3;
     private JTextField suIMCEsTextField;
-
 
 }

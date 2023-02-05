@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class Login extends pantalla{
     private JLabel usuario;
@@ -13,22 +14,21 @@ public class Login extends pantalla{
         entrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int contador = 0;
                 boolean ingreso = false;
                 String user = "mateo";
                 String contrasenia = "mateo123";
-                while(ingreso == false && contador < 3){
-                    if((user = String.valueOf(escribirUsuario)) == (contrasenia = String.valueOf(escribirContra))){
+                String pass = new String(escribirContra.getPassword()); //Transformamos a estring la contrasenia
+
+                if(escribirUsuario.getText().equals(user) && pass.equals(contrasenia)){ //validamos las credenciales
                         ingreso = true;
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null,
-                                "El usuario o contraseña son incorrectos");
-                        contador++;
-                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,
+                            "El usuario o contraseña son incorrectos");
+
                 }
 
-                if (ingreso == false) {
+                if (!ingreso) {
                     JOptionPane.showMessageDialog(null,
                             "Se a suspendido el numero de intentos permitidos");
                 }
@@ -38,23 +38,10 @@ public class Login extends pantalla{
                     frame.setContentPane(new pantalla().panel2);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
-                    frame.setSize(600, 400);
+                    frame.setSize(1000, 1000);
                     frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
                 }
-            }
-        });
-
-        escribirUsuario.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                escribirUsuario.getAction();
-            }
-        });
-        escribirContra.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                escribirContra.getAction();
             }
         });
     }
